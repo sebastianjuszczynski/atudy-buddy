@@ -5,8 +5,6 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { theme } from 'assets/styles/theme';
 
-
-
 const Root = () => (
 
   <ThemeProvider theme={theme}>
@@ -15,7 +13,6 @@ const Root = () => (
       <UsersList />
     </Wrapper>
   </ThemeProvider>
-
 
 );
 

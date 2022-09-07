@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import { Wrapper } from './UsersListItem.styled';
 import Button from 'components/atoms/Button/Button';
 
-
-const UsersListItem = ({ userData: { average, name, attendance = '0%'} }) => (
+const UsersListItem = ({ userData: { average, name, attendance = '0%' } }) => (
     <Wrapper>
         <div>{average}</div>
         <div>
@@ -15,10 +14,9 @@ const UsersListItem = ({ userData: { average, name, attendance = '0%'} }) => (
     </Wrapper>
 );
 
-
 UsersListItem.propTypes = {
     userData: PropTypes.shape({
-        average: PropTypes.string.isRequired,  
+        average: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         attendance: PropTypes.string,
     }),
