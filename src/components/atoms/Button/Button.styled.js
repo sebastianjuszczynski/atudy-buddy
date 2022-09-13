@@ -1,19 +1,12 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-export const StyledButton = styled.button`
-width: 22px;
-height: 22px;
-margin: 0 10px;
-background-color: ${({ theme }) => theme.colors.grey};
-border-radius:50%;
-border: none;
-color: white;
-display: flex;
-justify-content: center;
-align-items: center;
-
-svg {
-    width: 100%;
-    height: 100%;
-}
+export const Button = styled.button`
+    margin: 15px 0;
+    padding: 7px 20px;
+    font-size: ${({theme}) => theme.fontSize.s };
+    background-color: ${({theme}) => theme.colors.lightPurple};
+    border-radius: 20px;
+    border: none;
+    font-weight: bold;
+    color: ${({theme}) => theme.colors.slateGrey};
 `;
