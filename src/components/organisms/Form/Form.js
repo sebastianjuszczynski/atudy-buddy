@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledTitle, Wrapper } from '../UsersList/UsersList.styled';
 import FormField from 'components/molecules/FormField/FormField';
-import { Button } from 'components/atoms/Button/Button.styled';
+import { Button } from 'components/atoms/Button/Button';
 
 const Form = ({handleAddUser, formValues, handleInputChange}) => {
 
