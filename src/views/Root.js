@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
 import AddUser from 'views/AddUser';
 import Dashboard from 'views/Dashboard';
+import { users as dataUser } from 'data/users';
 
 const initialFormState = {
   name: '',
@@ -15,7 +16,7 @@ const initialFormState = {
 };
 
 const Root = () => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(dataUser);
   const [formValues, setFormValues] = useState(initialFormState);
 
   const deleteUser = (name) => {
@@ -46,7 +47,7 @@ const Root = () => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <MainTemplate>
-          <Wrapper>
+          <Wrapper> 
             <Routes>
               <Route path="/add-user" element={<AddUser handleInputChange={handleInputChange} formValues={formValues} handleAddUser={handleAddUser} />}>
               </Route>
