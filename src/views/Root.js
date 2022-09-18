@@ -9,52 +9,50 @@ import AddUser from 'views/AddUser';
 import Dashboard from 'views/Dashboard';
 import { users as dataUser } from 'data/users';
 
-const initialFormState = {
-  name: '',
-  attendance: '',
-  average: '',
-};
+
+
+export const UsersContext = React.createContext({
+  users: [],
+  handleAddUser: () => { },
+  deleteUser: () => { },
+});
 
 const Root = () => {
   const [users, setUsers] = useState(dataUser);
-  const [formValues, setFormValues] = useState(initialFormState);
 
   const deleteUser = (name) => {
     const filteredUsers = users.filter((user) => user.name !== name);
     setUsers(filteredUsers);
   };
 
-  const handleInputChange = (e) => {
-    setFormValues({
-      ...formValues,
-      [e.target.name]: e.target.value,
-
-    });
-  };
-
-  const handleAddUser = (e) => {
-    e.preventDefault();
+  const handleAddUser = (Values) => {
     const newUser = {
-      name: formValues.name,
-      attendance: formValues.attendance,
-      average: formValues.average,
+      name: Values.name,
+      attendance: Values.attendance,
+      average: Values.average,
     };
     setUsers([newUser, ...users]);
-    setFormValues(initialFormState);
   };
+
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <MainTemplate>
-          <Wrapper> 
-            <Routes>
-              <Route path="/add-user" element={<AddUser handleInputChange={handleInputChange} formValues={formValues} handleAddUser={handleAddUser} />}>
-              </Route>
-              <Route path="/" element={<Dashboard users={users} deleteUser={deleteUser} />}>
-              </Route>
-            </Routes>
-          </Wrapper>
+          <UsersContext.Provider value={{
+            users,
+            handleAddUser,
+            deleteUser,
+          }}>
+            <Wrapper>
+              <Routes>
+                <Route path="/add-user" element={<AddUser />}>
+                </Route>
+                <Route path="/" element={<Dashboard />}>
+                </Route>
+              </Routes>
+            </Wrapper>
+          </UsersContext.Provider>
         </MainTemplate>
       </ThemeProvider>
     </Router>
