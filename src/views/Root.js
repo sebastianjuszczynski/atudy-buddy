@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { theme } from 'assets/styles/theme';
@@ -7,43 +7,16 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
 import AddUser from 'views/AddUser';
 import Dashboard from 'views/Dashboard';
-import { users as dataUser } from 'data/users';
-
-
-
-export const UsersContext = React.createContext({
-  users: [],
-  handleAddUser: () => { },
-  deleteUser: () => { },
-});
+import UsersProviders from 'providers/UsersProvider';
 
 const Root = () => {
-  const [users, setUsers] = useState(dataUser);
-
-  const deleteUser = (name) => {
-    const filteredUsers = users.filter((user) => user.name !== name);
-    setUsers(filteredUsers);
-  };
-
-  const handleAddUser = (Values) => {
-    const newUser = {
-      name: Values.name,
-      attendance: Values.attendance,
-      average: Values.average,
-    };
-    setUsers([newUser, ...users]);
-  };
-
+ 
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <MainTemplate>
-          <UsersContext.Provider value={{
-            users,
-            handleAddUser,
-            deleteUser,
-          }}>
+          <UsersProviders>
             <Wrapper>
               <Routes>
                 <Route path="/add-user" element={<AddUser />}>
@@ -52,7 +25,7 @@ const Root = () => {
                 </Route>
               </Routes>
             </Wrapper>
-          </UsersContext.Provider>
+          </UsersProviders>
         </MainTemplate>
       </ThemeProvider>
     </Router>
