@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.28c8b3b2.css",
-    "main.js": "/static/js/main.2092a15e.js",
-    "static/media/delete-icon.svg": "/static/media/delete-icon.a9cf766428715c21c713c6f5ac836e8a.svg",
-    "index.html": "/index.html",
-    "main.2092a15e.js.map": "/static/js/main.2092a15e.js.map"
+    "main.css": "/atudy-buddy/static/css/main.28c8b3b2.css",
+    "main.js": "/atudy-buddy/static/js/main.d70a4a87.js",
+    "static/media/delete-icon.svg": "/atudy-buddy/static/media/delete-icon.a9cf766428715c21c713c6f5ac836e8a.svg",
+    "index.html": "/atudy-buddy/index.html",
+    "main.d70a4a87.js.map": "/atudy-buddy/static/js/main.d70a4a87.js.map"
   },
   "entrypoints": [
     "static/css/main.28c8b3b2.css",
-    "static/js/main.2092a15e.js"
+    "static/js/main.d70a4a87.js"
   ]
 }
