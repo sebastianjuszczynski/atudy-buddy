@@ -12,7 +12,7 @@ import UsersProviders from 'providers/UsersProvider';
 const Root = () => {
  
   return (
-    <Router>
+    <Router basename="atudy-buddy">
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <MainTemplate>
