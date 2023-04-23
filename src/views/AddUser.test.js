@@ -3,7 +3,7 @@ import AddUser from './AddUser';
 import Dashboard from './Dashboard';
 import '@testing-library/jest-dom/extend-expect';
 import { screen, fireEvent } from '@testing-library/react';
-import { renderWithProviders } from 'helpers/renderWithProviders'
+import { renderWithProviders } from 'helpers/renderWithThemeProviders'
 
 describe('Form Field', () => {
     it('Adds new user to the list', () => {

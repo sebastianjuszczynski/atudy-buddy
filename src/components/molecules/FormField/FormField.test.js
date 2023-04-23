@@ -1,6 +1,6 @@
 import React from 'react';
 import FormField from './FormField';
-import { renderWithProviders } from 'helpers/renderWithProviders'
+import { renderWithProviders } from 'helpers/renderWithThemeProviders'
 
 describe('Form Field', () => {
     it('Render the component', () => {

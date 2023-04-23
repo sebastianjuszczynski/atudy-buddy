@@ -5,10 +5,9 @@ import { theme } from 'assets/styles/theme';
 import UsersProvider from 'providers/UsersProvider';
 
 export const renderWithProviders = (children) => {
-    return render(
-        <ThemeProvider theme={theme}>
-            <UsersProvider>
-            {children}
-            </UsersProvider>
-        </ThemeProvider>);
+  return render(
+    <ThemeProvider theme={theme}>
+      <UsersProvider>{children}</UsersProvider>
+    </ThemeProvider>
+  );
 };
