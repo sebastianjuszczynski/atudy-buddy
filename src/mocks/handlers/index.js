@@ -7,8 +7,8 @@ export const handlers = [
   }),
 
   rest.get('/groups/:id', (req, res, ctx) => {
-    if (req.params.group) {
-      const matchingStudents = students.filter((student) => student.group === req.params.group);
+    if (req.params.id) {
+      const matchingStudents = students.filter((student) => student.group === req.params.id);
       return res(
         ctx.status(200),
         ctx.json({
