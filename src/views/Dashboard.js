@@ -8,6 +8,7 @@ import { Title } from 'components/atoms/Title/Title';
 import useModal from 'components/organisms/Modal/useModal';
 import StudentDetails from 'components/molecules/StudentDetails/StudentDetails';
 import Modal from 'components/organisms/Modal/Modal';
+import ErrorMessage from 'components/molecules/ErrorMessage/ErrorMessage';
 
 
 const Dashboard = () => {
@@ -47,12 +48,13 @@ const Dashboard = () => {
           ))}
         </nav>
       </TitleWrapper>
-      <GroupWrapper>
-        <StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
-        <Modal isOpen={isOpen} handleClose={handleCloseModal}>
-          <StudentDetails student={currentStudent} />
-        </Modal>
-      </GroupWrapper>
+      {id !== 'A' && id !== 'B' && id !== "C" ? <ErrorMessage  message='Please select group A, B, or C.'/> :
+        <GroupWrapper>
+          <StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
+          <Modal isOpen={isOpen} handleClose={handleCloseModal}>
+            <StudentDetails student={currentStudent} />
+          </Modal>
+        </GroupWrapper>}
     </Wrapper>
   );
 };
