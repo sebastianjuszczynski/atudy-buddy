@@ -1,31 +1,53 @@
 import React from 'react'
-import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from 'assets/styles/GlobalStyle';
-import { theme } from 'assets/styles/theme';
 import { Wrapper } from './Root.styled';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
 import Dashboard from 'views/Dashboard';
+import FormField from 'components/molecules/FormField/FormField';
+import { Button } from 'components/atoms/Button/Button';
+import { useForm } from 'react-hook-form';
+import { useAuth } from 'hooks/useAuth';
 
-const Root = () => {
+const AuthenticatedApp = () => {
+  return (
+    <MainTemplate>
+      <Wrapper>
+        <Routes>
+          <Route path="/" element={<Navigate to="/group" />} />
+          <Route path="/group/" element={<Dashboard />}>
+            <Route path=":id" element={<Dashboard />} />
+          </Route>
+        </Routes>
+      </Wrapper>
+    </MainTemplate>
+  );
+};
+
+const UnauthenticatedApp = () => {
+  const auth = useAuth();
+  const {
+    register,
+    handleSubmit,
+  } = useForm();
+
 
   return (
-    <Router>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <MainTemplate>
-          <Wrapper>
-            <Routes>
-              <Route path="/" element={<Navigate to="/group" />} />
-              <Route path="/group/" element={<Dashboard />}>
-              <Route path=":id" element={<Dashboard />} />
-              </Route>
-            </Routes>
-          </Wrapper>
-        </MainTemplate>
-      </ThemeProvider>
-    </Router>
-  )
+    <form
+      onSubmit={handleSubmit(auth.signIn)}
+      style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}
+    >
+      <FormField label="login" name="login" id="login" {...register('login', { required: true })} />
+      <FormField label="password" name="password" id="password" type="password" {...register('password', { required: true })} />
+      <Button type="submit">Sign in</Button>
+    </form>
+  );
+};
+
+const Root = () => {
+  const auth = useAuth();
+
+  return auth.user ? <AuthenticatedApp /> : <UnauthenticatedApp />
+     
 };
 
 export default Root;
