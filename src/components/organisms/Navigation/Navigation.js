@@ -13,6 +13,7 @@ const Navigation = () => {
         </h1>
       </Logo>
       <StyledLink to="/group">Dashboard</StyledLink>
+      <StyledLink as="a" onClick={() => localStorage.removeItem('token')}>Login</StyledLink>
     </Wrapper>
   );
 };
