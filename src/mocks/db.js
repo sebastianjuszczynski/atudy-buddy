@@ -45,6 +45,6 @@ export const db = factory({
     id: primaryKey(() => '1'),
     name: () => 'Jacek Sobczak',
     login: () => 'teacher@studdybuddy.com',
-    password: () => '1234',
+    password: () => 'Test123',
   },
 });
