@@ -7,6 +7,10 @@ export const ErrorProvider = ({ children }) => {
 
     const dispatchError = useCallback((message) => {
         setError(message);
+        setTimeout(() => {
+            setError('');
+          }, 7000);
+        
     }, []);
 
     return <ErrorContext.Provider value={{ error, dispatchError }}>{children}</ErrorContext.Provider>
