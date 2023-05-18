@@ -32,12 +32,18 @@ const UnauthenticatedApp = () => {
   const {
     register,
     handleSubmit,
+    reset,
   } = useForm();
+
+  const handleSubmitAndInputsClear = ({login, password}) => {
+    auth.signIn({login, password});
+    reset();
+  }
 
 
   return (
     <form
-      onSubmit={handleSubmit(auth.signIn)}
+      onSubmit={handleSubmit(handleSubmitAndInputsClear)}
       style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}
     >
       <FormField label="login" name="login" id="login" {...register('login', { required: true })} />
