@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import { useAuth } from 'hooks/useAuth';
 import ErrorMessage from 'components/molecules/ErrorMessage/ErrorMessage';
 import { useError } from 'hooks/useError';
+import Notes from './Notes';
 
 const AuthenticatedApp = () => {
   return (
@@ -19,6 +20,7 @@ const AuthenticatedApp = () => {
           <Route path="/group/" element={<Dashboard />}>
             <Route path=":id" element={<Dashboard />} />
           </Route>
+          <Route path="/notes" element={<Notes />}></Route>
         </Routes>
       </Wrapper>
     </MainTemplate>
@@ -30,12 +32,18 @@ const UnauthenticatedApp = () => {
   const {
     register,
     handleSubmit,
+    reset,
   } = useForm();
+
+  const handleSubmitAndInputsClear = ({login, password}) => {
+    auth.signIn({login, password});
+    reset();
+  }
 
 
   return (
     <form
-      onSubmit={handleSubmit(auth.signIn)}
+      onSubmit={handleSubmit(handleSubmitAndInputsClear)}
       style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}
     >
       <FormField label="login" name="login" id="login" {...register('login', { required: true })} />
