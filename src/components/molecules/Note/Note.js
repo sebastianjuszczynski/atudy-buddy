@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { removeNote } from 'store';
 import { NoteWrapper, StyledDeleteButton } from '../Note/Note.styles';
 
-const Note = ({ title = 'Untitled', content = 'No content', id }) => {
+const Note = ({ title, content, id }) => {
   const dispatch = useDispatch();
 
   const handleRemoveNote = () => {
